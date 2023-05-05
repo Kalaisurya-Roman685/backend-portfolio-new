@@ -1,13 +1,10 @@
-
-import cors from 'cors';
-import bodyParser from "body-parser";
 import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-import Connect from "./dbconnect/Dbconnect.js";
-import router from './router.js';
-
+import Connect from './dbconnect/Dbconnect.js';
+import routerauth from './routers.js';
 dotenv.config();
-
 Connect();
 
 const app = express();
@@ -16,10 +13,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.use("/learn",router);
 
-
-
+// api calls
+app.use("/portfolio", routerauth)
 app.listen(process?.env?.PORT, () => {
-    console.log("Port Is Running 8000")
+    console.log("Port Is Running 8000...")
 })
