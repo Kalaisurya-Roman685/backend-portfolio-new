@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 const Authschema = new mongoose.Schema({
     username: {
         type: String,
-        required: true
     },
     email: {
         type: String,
@@ -16,8 +15,27 @@ const Authschema = new mongoose.Schema({
     },
     image: {
         type: String,
-        required: true
+       
+    },
+    instagaramurl: {
+        type: String
+    },
+    youtubeurl: {
+        type: String
+    },
+    facebookurl: {
+        type: String
+    },
+    dob: {
+        type: String,
+    },
+    gender: {
+        type: String
+    },
+    contactno: {
+        type: String
     }
+
 },
     {
         timestamps: true

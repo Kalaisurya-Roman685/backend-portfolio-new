@@ -1,0 +1,13 @@
+Username
+balakartick@cdp360.com
+Password
+F9C93722C6AA6F552DBABDF95C0F78D18BB2
+
+prakash@yopmail.com
+Password
+38F40ABECC6D68A72ED38EB06D83C88C4E46
+Copy
+Server
+smtp.elasticemail.com
+Port
+2525

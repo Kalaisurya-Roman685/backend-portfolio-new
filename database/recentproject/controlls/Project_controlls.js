@@ -86,10 +86,16 @@ export const Projectsingle = async (req, res) => {
 
 // all find projects
 
+
+const sample = [];
+
+console.log("kalai", sample);
+
 export const ProjectAllprojects = async (req, res) => {
 
     if (req.params.id) {
         const projects = await Project_shema.find({ userId: req.params.id });
+        sample.push(projects);
         res.status(200).json({
             success: true,
             code: 201,
