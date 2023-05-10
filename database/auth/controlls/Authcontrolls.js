@@ -80,12 +80,12 @@ export const AuthLogin = async (req, res) => {
 // get update details
 
 export const AuthUser = async (req, res) => {
-    const { email, password, username, dob, contactno, gender, facebookurl, youtubeurl, instagaramurl,image } = req.body;
+    const { email, password, username, dob, contactno, gender, facebookurl, youtubeurl, instagaramurl, image } = req.body;
     if (req.params.id) {
         // const gensalt = await bcrypt.genSalt(10);
         // const hashed = await bcrypt.hash(password, gensalt);
         const passwordcheck = await Auth_schema.findByIdAndUpdate(req.params.id, {
-           username: username, dob: dob, contactno: contactno, gender: gender, facebookurl: facebookurl, youtubeurl: youtubeurl, instagaramurl: instagaramurl,image:"kalai"
+            username: username, dob: dob, contactno: contactno, gender: gender, facebookurl: facebookurl, youtubeurl: youtubeurl, instagaramurl: instagaramurl,
         }, { new: true })
         res.status(200).json({
             success: true,
@@ -228,4 +228,31 @@ export const AuthForgetpasswordVerify = async (req, res) => {
             message: "Email Not Found..."
         })
     }
+}
+
+// profile image upload
+
+export const ProfileImage = async (req, res) => {
+    // console.log(req.file.path)
+   
+        if (req.params.id) {
+            const UpdateImage = await Auth_schema.findByIdAndUpdate(req.params.id, {
+                image: req.file.path
+            }, { new: true });
+            res.status(200).json({
+                success: true,
+                code: 200,
+                message: "User Profile Updated..."
+            })
+
+        }
+        else {
+            res.status(404).json({
+                success: false,
+                code: 404,
+                message: "User Id Not Matched..."
+            })
+        }
+    
+   
 }

@@ -15,7 +15,6 @@ const Authschema = new mongoose.Schema({
     },
     image: {
         type: String,
-       
     },
     instagaramurl: {
         type: String
