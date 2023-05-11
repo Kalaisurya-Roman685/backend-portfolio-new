@@ -6,7 +6,7 @@ export const Projectcreate = async (req, res) => {
     const { userId, image, redirecturl, pathtexts } = req.body;
     if (userId) {
         const projects = new Project_shema({
-            image: image,
+            image: req.file.path,
             redirecturl: redirecturl,
             pathtexts: pathtexts,
             userId: userId
@@ -87,15 +87,14 @@ export const Projectsingle = async (req, res) => {
 // all find projects
 
 
-const sample = [];
-
-console.log("kalai", sample);
 
 export const ProjectAllprojects = async (req, res) => {
 
+    console.log(req.params.id)
+
     if (req.params.id) {
         const projects = await Project_shema.find({ userId: req.params.id });
-        sample.push(projects);
+        console.log(projects,"projects")
         res.status(200).json({
             success: true,
             code: 201,
