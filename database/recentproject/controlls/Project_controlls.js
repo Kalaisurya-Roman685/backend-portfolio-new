@@ -11,8 +11,9 @@ export const Projectcreate = async (req, res) => {
             pathtexts: pathtexts,
             userId: userId
         })
+        // console.log(projects,"projects")
         await projects.save();
-        res.status(200).json({
+        res.status(201).json({
             success: true,
             code: 201,
             data: projects,
@@ -37,7 +38,7 @@ export const Projectupdate = async (req, res) => {
 
     if (req.params.id) {
         const projects = await Project_shema.findByIdAndUpdate(req.params.id, {
-            image: image,
+            image: req.file.path,
             redirecturl: redirecturl,
             pathtexts: pathtexts,
             userId: userId
@@ -90,11 +91,9 @@ export const Projectsingle = async (req, res) => {
 
 export const ProjectAllprojects = async (req, res) => {
 
-    console.log(req.params.id)
-
     if (req.params.id) {
         const projects = await Project_shema.find({ userId: req.params.id });
-        console.log(projects,"projects")
+       
         res.status(200).json({
             success: true,
             code: 201,
@@ -116,6 +115,7 @@ export const ProjectAllprojects = async (req, res) => {
 
 
 export const Projectdelete = async (req, res) => {
+
     if (req.params.id) {
         const projects = await Project_shema.findByIdAndDelete(req.params.id)
         res.status(200).json({

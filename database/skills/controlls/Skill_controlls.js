@@ -5,11 +5,11 @@ import Skills_shema from "../skillschema/Skills_shema";
 // create skills
 
 export const Skillscreate = async (req, res) => {
-    const { image, des, title, userId } = req.body
-
+    const { des, title, userId } = req.body
+    console.log(req.body, "kalai");
     if (userId) {
         const skill = new Skills_shema({
-            image: image,
+            image: "image",
             userId: userId,
             title: title,
             des: des
@@ -29,6 +29,7 @@ export const Skillscreate = async (req, res) => {
             message: "User Id Missing..."
         })
     }
+
 }
 
 
@@ -40,7 +41,7 @@ export const Skillsupdate = async (req, res) => {
 
     if (req.params.id) {
         const skill = await Skills_shema.findByIdAndUpdate(req.params.id, {
-            image: image,
+            image: "image",
             userId: userId,
             title: title,
             des: des

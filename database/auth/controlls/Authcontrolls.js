@@ -4,6 +4,8 @@ import { TokenCreate, TokenResetPassword, TokenVerify } from "../../../middlewar
 import Auth_schema from "../authshema/Auth_schema.js";
 import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
+
+
 export const AuthRegister = async (req, res) => {
     const { username, email, password, image, instagaramurl, youtubeurl, facebookurl, dob, gender, contactno } = req.body;
     const existusercheck = await Auth_schema.findOne({ email });

@@ -34,8 +34,8 @@ const upload = multer({
 const routerproject = express.Router();
 routerproject.post("/create", upload, Projectcreate);
 routerproject.put("/update/:id", upload, Projectupdate);
-routerproject.delete("/delete/:id", Projectdelete);
-routerproject.get("/getsingle/:id", Projectsingle);
+routerproject.delete("/delete/:id",Projectdelete);
+routerproject.get("/getsingle/:id",Projectsingle);
 routerproject.get("/getallprojects/:id", ProjectAllprojects);
 
 
